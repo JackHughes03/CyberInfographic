@@ -7,7 +7,7 @@
         <header class="w-full h-full">
             <h1 class="text-white text-5xl max-w-[1100px] p-10 font-[cabinsketch]">
                 <span>Cryptocurrency Underworld Unveiled:</span><br> 
-                <span class="text-xl ml-1 opacity-70 font-light">Exploring Notorious Crypto Crimes and Legal Responses</span>
+                <span class="text-xl ml-1 opacity-70 font-light">Exploring Notorious Crypto Crimes and Global Responses</span>
             </h1>
             
             <div class="flex flex-wrap p-10 gap-2 max-w-4xl introbuttons">
@@ -61,7 +61,7 @@
                 <p>Currently, the UK do not have any specific laws and regulations for crypto currency, however, they are looking at implementing some to regulate the growing crypto market.</p>
                 <p class="mt-0">Here are some recommendations:</p>
                 
-                <ul class="list">
+                <ul>
                     <li>Licenses and Registration for Crypto businesses - This will help the authorities to oversee what is going on more easier.</li>
                     <li>Anti-Money Laundering (AML) and Know Your Customer (KYC) - This will help to prevent money laundering and other illegal activities.</li>
                     <li>Consumer Protection - Crypto currency scams are huge right now and this needs to be regulated. This will help to protect consumers from said scams.</li>
@@ -71,7 +71,7 @@
                 <h3 class="mt-10">USA</h3>
                 <p>The US have a few laws and regulations in place for crypto currency, however, they are not as strict as they could be. Here are some of the laws and regulations in place:</p>
                 
-                <ul class="list">
+                <ul>
                     <li>The Arizona State Senate introduced a bill that would amend the definition of legal tender to include Bitcoin.</li>
                     <li>Iowa introduced a bill that would prohibit the state from accepting payment in the form of cryptocurrencies.</li>
                 </ul>
@@ -83,6 +83,34 @@
             
             <section>
                 <h2>Global Response</h2>
+
+                <h3>Cryptocurrency cybersecurity response</h3>
+                
+                <h4 class="pt-0">Government</h4>
+                <p>As a whole, governments around the world are responding to the current state of cybersecurity in cryptocurrency like they would with anything, although because this is a modern and technical situation, they need to respond slightly differently. Lets take a look at what governments around the world are doing:</p>
+
+                <ul>
+                    <li>Some governments like the United Kingdom, Japan, South Korea, Malta, Singapore, United States, and Australia have implemented licensing requirements for cryptocurrency exchanges, or were in the process of considering this.</li>
+                    <li>Some governments have been cooperating at international level to share information and combat crimes regarding cryptocurrency.</li>
+                    <li>Governments around the world have introduced or supported the idea of public awareness campaigns to educate citizens about the risks of associating with cryptocurrencies.</li>
+                </ul>
+
+                <h4>Private sector</h4>
+                <p>The private sector has also been responding to the current state of cybersecurity in cryptocurrency. The private sector most likely contains talented people with good skill sets, so it would make sense to engage in some sort of response. Here are some examples:</p>
+
+                <ul>
+                    <li>Numerous cybersecurity companies have started to address the needs for cybersecurity within the cryptocurrency industry. They offer services like wallet security, security audits, penetration testing, and incident response services.</li>
+                    <li>Companies have started creating Multi-signature and hardware wallets to provide enhanced and better security.</li>
+                    <li>The private sector have also started to develop insurance to protect the assets that people invest in.</li>
+                </ul>
+
+                <h4>Individuals</h4>
+                <p>Because people who dabble in cryptocurrency are usually doing it by themselves, hoping that the price of their cryptocurrency goes up, this means they're more vunerable and need to be more aware of what is going on. They can only do as much as the companies who help protect them. Lets see how they responded to it:</p>
+
+                <ul>
+                    <li>A 74 year old male named Naum Lantsman got scammed out of 340 million USD worth of cryptocurrency. In an interview, his daughter said 'I lost 100% of my family's liquidity'.</li>
+                    <li>In a report by the FTC, it is said that in 2021, 680 million USD worth of cryptocurrencies was stolen by fraud.</li>
+                </ul>
             </section>
             
             <section>
@@ -142,6 +170,10 @@
                 h3 {
                     @apply text-white pb-10 text-xl ml-10 pt-2 font-semibold underline;
                 }
+
+                h4 {
+                    @apply text-white pb-8 text-base ml-10 pt-10 font-semibold underline;
+                }
                 
                 p {
                     @apply text-white text-base px-10 -mt-6;
@@ -151,10 +183,13 @@
                     @apply w-[89%] max-w-4xl mt-4 mx-auto;
                 }
                 
-                .list {
+                ul {
                     @apply text-white ml-20 mt-4 list-disc pr-10;
                 }
             }
         }
     }
 </style>
+
+
+<!-- Naum Lantsman: https://www.npr.org/2023/06/25/1180256165/crypto-scam-senior-victims-spirebit -->
