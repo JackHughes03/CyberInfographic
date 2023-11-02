@@ -1,126 +1,117 @@
 <script setup>
     import { ref, onMounted } from 'vue';
+
+    const sections = ref([]);
+    const observer = ref(null);
+
+    onMounted(() => {
+        sections.value = document.querySelectorAll('section');
+        observer.value = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    entry.target.classList.add('opacity-100');
+                } else {
+                    entry.target.classList.remove('opacity-100');
+                }
+            });
+        });
+
+        sections.value.forEach(section => {
+            observer.value.observe(section);
+        });
+    });
 </script>
 
 <template>
     <div id="app" class="h-full w-full">
         <header class="w-full h-full">
-            <h1 class="text-white text-5xl max-w-[1100px] p-10 font-[cabinsketch]">
-                <span>Cryptocurrency Underworld Unveiled:</span><br> 
-                <span class="text-xl ml-1 opacity-70 font-light">Exploring Notorious Crypto Crimes and Global Responses</span>
+            <h1 class="text-white text-5xl p-10 font-[cabinsketch]">
+                <span>Cryptocurrency Coincheck Attack:</span><br> 
+                <span class="text-xl ml-1 opacity-70 font-light">Exploring the Notorious Coincheck Crypto attack and Responses from all around</span>
             </h1>
             
-            <div class="flex flex-wrap p-10 gap-2 max-w-4xl introbuttons">
-                <a href="#intro">Introduction</a>
-                <a href="#pipeline">Colonial Pipeline ransomware</a>
-                <a href="#polynetwork">Poly Network</a>
-                <a href="#laws">Legislations and/or regulations</a>
-                <!-- <button>The Culprits</button>
-                    <button>The Legal Response</button>
-                    <button>Global Response</button>
-                    <button>Protecting Your Assets</button>
-                    <button>Prevention and Awareness</button> 
-                -->
-                <a>Conclusion</a> 
+            <div class="inline-flex flex-col p-10 gap-2 absolute bottom-0 introbuttons">
+                <a href="#intro" class="bg-blue-900 bg-opacity-50">Introduction</a>
+                <a href="#pipeline" class="bg-green-900 bg-opacity-50">Coincheck summary</a>
+                <a href="#polynetwork" class="bg-purple-900 bg-opacity-50">Legilations/Regulations</a>
+                <a href="#laws" class="bg-slate-800 bg-opacity-50">Response</a>
             </div>
         </header>
         
-        <main>
-            <img class="float-right w-96 mr-8 mt-8" src="../assets/images/piechart.png" alt="">
-            
-            <section class="mt-0">
+        <main class="flex flex-col max-w-7xl mx-auto">            
+            <section class="bg-blue-900 w-[95%] mt-10 pb-10 ml-auto">
                 <h2 id="intro">Introduction</h2>
                 
                 <p>Crypto seems to be an ever evolving currency which is becoming more and more popular. Although this may be good for factors including money growth and trust, just like anything, it comes with its downsides, specifically cyber issues...</p>
-                <p class="mt-6">In this infographic, I will visualise and discuss the current and potential crypto crimes and legal responses. Here is a diagram to visualise the percentage of how cyber attacks happen in crypto currency.</p>
+                <p class="mt-6">In this infographic, I will visualise and discuss the 2018 Coincheck attack, arguably one of the biggest cryptocurrency attacks ever. I will show what happened, aswell as global responses. Here is a diagram from cointracker.io (cointracker, 2023) to visualise the biggest cryptocurrency hacks.</p>
+
+                <img src="../assets/images/graph.png" alt="Image to represent largest cryptocurrency hacks" title="Image to represent largest cryptocurrency hacks">
             </section>
             
-            <section>
-                <h2>Crypto Cyber Incidents</h2>
+            <section class="bg-green-900 w-[95%] mt-10 pb-10">
+                <h2>Coincheck attack summary</h2>
                 
-                <h3 id="pipeline">Colonial Pipeline ransomware</h3>
-                <p>Now due to the harder traceability of crypto currency transactions, a lot of hackers demand payment through some sort of crypto currency.</p>
-                <p class="mt-6">In may 2021, the Colonial Pipeline, a major fuel pipeline in the US, was hit by a ransomware attack that forced it to shutdown. The hackers demanded a payment of 4.4 million USD through Bitcoin in exchange for the decryption key to unlock the pipeline's systems.</p>
-                <p class="mt-6">The pipeline was shut down for 6 days, resulting in a fuel shortage in the US. The pipeline's CEO, Joseph Blount, said that he authorised the payment because he was unsure how long the shutdown would last and did not want to risk the public's safety. Although the company authorised the payment, the FBI conducted an investigation into what happened, working closely with various cybersecurity experts and private partners to trace the attackers origin.</p>
-                <p class="mt-6">The FBI was able to recover some of the stolen funds.</p>
-                
-                <img class="mt-10" src="../assets/images/pipeline.webp" alt="">
-                
-                <h3 id="polynetwork" class="mt-10">Poly network</h3>
-                <p>In August 2021, hackers stole cryptocurrencies worth over 600 million USD in the form of crypto from Poly Network, which is a finance platform. The hacker later on said they did it 'for fun', although significant damage was done to not only Poly Network's reputation, but their financial assets, resulting in money freezes.</p>
-                <p class="mt-6">The hacker returned the money, but the incident still raised questions about the security of crypto currency. Below is a visual representation of the hacker recieving the money.</p>
-                <p class="mt-6"></p>
-                
-                <img src="../assets/images/polynetwork.png" alt="">
+                <p>Coincheck, a Japanese cryptocurrency exchance company, was hacked in 2018. They managed to steal approximately 523 million NEM tokens, which were valued at around $530 million at the time of the hack.</p>
+                <p class="mt-6">The hackers managed to gain access to the companies cryptocurrency hot wallet through a vulnerability, which alloewed them to gain access to the private keys of the wallet.</p>
+                <p class="mt-6">A hot wallet is a wallet that stores its assets online. This was easier to hack as the wallet is always online. Here is an image from nownodes.io (nownodes, 2022), to show the difference between a hot and cold wallet.</p>
+
+                <img src="../assets/images/hotcold.png" alt="Image to show the differences between a hot and cold cryptocurrency wallet." title="Image to show the differences between a hot and cold cryptocurrency wallet.">
             </section>
             
-            <section>
+            <section class="bg-purple-900 w-[95%] mt-10 pb-10 ml-auto">
                 <h2 id="laws">Legislations and/or regulations</h2>
                 
-                <h3>UK</h3>
-                <p>Currently, the UK do not have any specific laws and regulations for crypto currency, however, they are looking at implementing some to regulate the growing crypto market.</p>
-                <p class="mt-0">Here are some recommendations:</p>
+                <p>Because this was one of the first biggest cryptocurrency hacks, it sent shockwaves through the crypto community, and also law enforcement. Lets see what was a result of this attack:</p>
                 
                 <ul>
-                    <li>Licenses and Registration for Crypto businesses - This will help the authorities to oversee what is going on more easier.</li>
-                    <li>Anti-Money Laundering (AML) and Know Your Customer (KYC) - This will help to prevent money laundering and other illegal activities.</li>
-                    <li>Consumer Protection - Crypto currency scams are huge right now and this needs to be regulated. This will help to protect consumers from said scams.</li>
-                    <li>Market Integrity - The crypto market can be influenced by people with a big following, such as Elon Musk. Perhaps some laws regarding these activities need to be put in place.</li>
+                    <li>Japanese law enforcement launched an investigation into the hack to identify the culprits and try to recover the stolen assets.</li>
+                    <li>The Financial Services Agency (FSA) of Japan, increased their oversight of the cryptocurrency exchanges within Japan. They also conducted security assessments to be sure they comply with regulations.</li>
+                    <li>Exchanges were encouraged to use cold wallet storage, which is an offline way to store funds.</li>
+                    <li>The hack prompted Japan to implement stricter regulations for cryptocurrency exchanges. This includes:</li>
+
+                    <ul class="ml-4">
+                        <li><span class="font-bold">Licensing requirements</span> - Cryptocurrency exchanges in Japan are required to have a license to operate legally.</li>
+                        <li><span class="font-bold">Customer protection</span> - Regulations were put in place to safeguard customer assets to ensure exchanges had adequate security measures.</li>
+                        <li><span class="font-bold">Know Your Customers (KYC) and Anti-Money Laundering (AML) Compliance</span> - Exchanges were requires to implement these procedures to prevent money laundering and terrorist financing.</li>
+                    </ul>
                 </ul>
-                
-                <h3 class="mt-10">USA</h3>
-                <p>The US have a few laws and regulations in place for crypto currency, however, they are not as strict as they could be. Here are some of the laws and regulations in place:</p>
-                
-                <ul>
-                    <li>The Arizona State Senate introduced a bill that would amend the definition of legal tender to include Bitcoin.</li>
-                    <li>Iowa introduced a bill that would prohibit the state from accepting payment in the form of cryptocurrencies.</li>
-                </ul>
-                
-                <p class="mt-8">Below is a quick representational diagram map to showcase cryptocurrency regulations in each country.</p>
-                
-                <img src="../assets/images/crypto-regulations.jpg" alt="">
             </section>
             
-            <section>
-                <h2>Global Response</h2>
+            <section class="bg-slate-800 w-[95%] mt-10 pb-10">
+                <h2>Response</h2>
 
-                <h3>Cryptocurrency cybersecurity response</h3>
-                
-                <h4 class="pt-0">Government</h4>
-                <p>As a whole, governments around the world are responding to the current state of cybersecurity in cryptocurrency like they would with anything, although because this is a modern and technical situation, they need to respond slightly differently. Lets take a look at what governments around the world are doing:</p>
+                <h4 class="p-0 pb-10">Private sector</h4>
+                <p>Like many, this attack shocked the private sector. Because of this, they began advancing their protection and security in regards to cryptocurrency.</p>
 
                 <ul>
-                    <li>Some governments like the United Kingdom, Japan, South Korea, Malta, Singapore, United States, and Australia have implemented licensing requirements for cryptocurrency exchanges, or were in the process of considering this.</li>
-                    <li>Some governments have been cooperating at international level to share information and combat crimes regarding cryptocurrency.</li>
-                    <li>Governments around the world have introduced or supported the idea of public awareness campaigns to educate citizens about the risks of associating with cryptocurrencies.</li>
-                </ul>
-
-                <h4>Private sector</h4>
-                <p>The private sector has also been responding to the current state of cybersecurity in cryptocurrency. The private sector most likely contains talented people with good skill sets, so it would make sense to engage in some sort of response. Here are some examples:</p>
-
-                <ul>
-                    <li>Numerous cybersecurity companies have started to address the needs for cybersecurity within the cryptocurrency industry. They offer services like wallet security, security audits, penetration testing, and incident response services.</li>
-                    <li>Companies have started creating Multi-signature and hardware wallets to provide enhanced and better security.</li>
-                    <li>The private sector have also started to develop insurance to protect the assets that people invest in.</li>
+                    <li><span class="font-bold">Enchanced Security Measures - </span>Investigated more advanced security technologies, conducting security audits, and implementing multi-signature wallets, whilst also exploring the advancement of cold wallets.</li>
+                    <li><span class="font-bold">Insurance - </span>Some companies who offer exchange services, started to offer insurance as part of their services. This covered protection for their customers assets.</li>
+                    <li><span class="font-bold">Collaboration - </span>The cryptocurrency industry started to come together to work closely to prevent future attacks. Combining skill sets helped them come up with better and more robust ideas.</li>
+                    <li><span class="font-bold">Education and Awareness - </span>Because this Coincheck hack serves as a wake-up call for the community, education for customers was upped as a result.</li>
                 </ul>
 
                 <h4>Individuals</h4>
-                <p>Because people who dabble in cryptocurrency are usually doing it by themselves, hoping that the price of their cryptocurrency goes up, this means they're more vunerable and need to be more aware of what is going on. They can only do as much as the companies who help protect them. Lets see how they responded to it:</p>
+                <p>Depending on the involvement and their personal experience regarding the cryptocurrency industry, individuals reacted differently.</p>
 
                 <ul>
-                    <li>A 74 year old male named Naum Lantsman got scammed out of 340 million USD worth of cryptocurrency. In an interview, his daughter said 'I lost 100% of my family's liquidity'.</li>
-                    <li>In a report by the FTC, it is said that in 2021, 680 million USD worth of cryptocurrencies was stolen by fraud.</li>
+                    <li><span class="font-bold">Investors - </span>Investors were more careful about investing in cryptocurrency, as they were worried about the security of their assets and what it could do to their brand.</li>
+                    <li><span class="font-bold">Crypto Enthusiasts - </span>Some crypto enthusiasts were not phased by the hack, and continued to invest in cryptocurrency. This was the highest probability outcome.</li>
+                    <li><span class="font-bold">Crypto Skeptics - </span>Some skeptics used this as an opportunity to criticise cryptocurrency, and use it as an example of why cryptocurrency is not a good investment.</li>
                 </ul>
             </section>
-            
-            <section>
-                <h2>Prevention and Awareness</h2>
-            </section>
-            
-            <section>
-                <h2>Conclusion</h2>
+
+            <section class="bg-[#ffffff98] w-[95%] mt-10 pb-10 ml-auto font-serif">
+                <h2 class="text-black">References</h2>
+
+                <p class="text-black">Nownodes.io (2022) Hot vs cold wallet: How do you store your crypto?: NOWNodes, News about Nodes | The Official NOWNodes Blog. Available at: <a href="https://nownodes.io/blog/hot-vs-cold-wallet-how-do-you-store-your-crypto/" class="text-blue-800" target="_blank"> https://nownodes.io/blog/hot-vs-cold-wallet-how-do-you-store-your-crypto/ </a> (Accessed: 01 November 2023). </p>
             </section>
         </main>
+
+        <footer class="text-white text-center py-4 text-sm mt-10">Coded using 
+            <a href="https://vuejs.org/" target="_blank">VueJS</a>, 
+            <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>, and 
+            <a href="https://sass-lang.com/" target="_blank">sass</a> by Jack Hughes 2023
+        </footer>
     </div>
 </template>
 
@@ -147,20 +138,18 @@
             
             .introbuttons {
                 a {
-                    @apply text-white cursor-pointer text-left px-4 bg-[#ffffff25] py-2 rounded backdrop-blur-sm duration-300;
+                    @apply text-white cursor-pointer text-left px-4 py-4 rounded backdrop-blur-sm duration-300;
                     
                     &:hover {
-                        @apply bg-[#333333];
+                        @apply bg-opacity-100;
                     }
                 }
             }
         }
         
-        main {
-            @apply  max-w-4xl mx-auto;
-            
+        main {            
             section {
-                @apply mt-20;
+                @apply mt-20 rounded-md max-w-4xl opacity-0 duration-500;
                 
                 h2 {
                     font-family: 'Exo';
@@ -188,8 +177,11 @@
                 }
             }
         }
+
+        footer {
+            a {
+                @apply underline text-blue-200;
+            }
+        }
     }
 </style>
-
-
-<!-- Naum Lantsman: https://www.npr.org/2023/06/25/1180256165/crypto-scam-senior-victims-spirebit -->
